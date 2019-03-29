@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.felipesilva.marvelheroes.R
-import com.felipesilva.marvelheroes.data.CharactersData
+import com.felipesilva.marvelheroes.data.model.CharactersData
 import kotlinx.android.synthetic.main.activity_list.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
@@ -33,14 +33,6 @@ class ListActivity : AppCompatActivity(), KodeinAware {
             }
             text_view.text= stringBuilder.toString()
         })
-
-        button_test.setOnClickListener {
-            val character = CharactersData("Felipe", "Yesterday", "Desc")
-            val character2 = CharactersData("Felipe2", "Yesterday2", "Desc2")
-
-            viewModel.addCharacter(character)
-            viewModel.addCharacter(character2)
-        }
 
     }
 }

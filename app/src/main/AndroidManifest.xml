@@ -3,6 +3,8 @@
           xmlns:tools="http://schemas.android.com/tools"
           package="com.felipesilva.marvelheroes">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
             android:name=".ListApplication"
             android:allowBackup="true"
