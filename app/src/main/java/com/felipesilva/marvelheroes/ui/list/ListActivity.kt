@@ -6,11 +6,15 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.felipesilva.marvelheroes.R
 import com.felipesilva.marvelheroes.data.CharactersData
-import com.felipesilva.marvelheroes.utilities.InjectorUtils
 import kotlinx.android.synthetic.main.activity_list.*
-import java.lang.StringBuilder
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity(), KodeinAware {
+
+    override val kodein by closestKodein()
+    private val listViewModelFactory : ListViewModelFactory by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +23,7 @@ class ListActivity : AppCompatActivity() {
     }
 
     private fun initializeUI() {
-        val factory = InjectorUtils.provideListViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
+        val viewModel = ViewModelProviders.of(this, listViewModelFactory)
             .get(ListViewModel::class.java)
 
         viewModel.getHeroes().observe(this, Observer { heroes ->
