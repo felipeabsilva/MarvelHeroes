@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.felipesilva.marvelheroes.R
+import com.felipesilva.marvelheroes.adapter.ListCardAdapter
 import com.felipesilva.marvelheroes.data.model.CharactersData
 import kotlinx.android.synthetic.main.activity_list.*
 import org.kodein.di.KodeinAware
@@ -26,13 +28,12 @@ class ListActivity : AppCompatActivity(), KodeinAware {
         val viewModel = ViewModelProviders.of(this, listViewModelFactory)
             .get(ListViewModel::class.java)
 
-        viewModel.getHeroes().observe(this, Observer { heroes ->
-            /*val stringBuilder = StringBuilder()
-            heroes.forEach{ hero ->
-                stringBuilder.append("$hero\n\n")
-            }*/
-            text_view.text = heroes.size.toString()
-        })
+        recycler_list.apply {
+            layoutManager = LinearLayoutManager(this@ListActivity)
+        }
 
+        viewModel.getHeroes().observe(this, Observer {
+            recycler_list.adapter = ListCardAdapter(viewModel.getHeroes())
+        })
     }
 }
