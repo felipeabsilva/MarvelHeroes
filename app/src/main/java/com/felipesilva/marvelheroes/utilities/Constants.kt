@@ -1,6 +1,5 @@
 package com.felipesilva.marvelheroes.utilities
 
-import android.util.Log.d
 import java.util.*
 
 object MarvelApiParam {

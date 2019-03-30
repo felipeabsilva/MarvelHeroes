@@ -12,7 +12,7 @@ import retrofit2.http.Query
 
 interface ApiService {
     @GET("characters")
-    fun getListHeroes(
+    fun makeCallListHeroes(
         @Query("offset") offset: Int = OFFSET,
         @Query("limit") limit: Int = LIMIT,
         @Query("ts") ts: String = TS,

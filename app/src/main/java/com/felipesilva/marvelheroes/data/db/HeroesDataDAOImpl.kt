@@ -4,19 +4,21 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.felipesilva.marvelheroes.data.model.CharactersData
 
-class HeroesDataDAOImpl : HeroesDataDAO {
+class HeroesDataDAOImpl(private val heroesDatabase: HeroesDatabase) : HeroesDataDAO {
     private val heroesList = mutableListOf<CharactersData>()
     private val heroes = MutableLiveData<List<CharactersData>>()
 
     init {
-        heroes.value = heroesList
-    }
+        heroesDatabase.makeCallListHeroes()
 
-    override fun addCharacter(charactersData: CharactersData) {
-        heroesList.add(charactersData)
-        heroes.value = heroesList
+        heroesDatabase.getHeroes().observeForever { mHeroes ->
+            if (heroesList.isNotEmpty())
+                heroesList.clear()
+
+            heroesList.addAll(mHeroes)
+            heroes.value = heroesList
+        }
     }
 
     override fun getHeroes(): LiveData<List<CharactersData>> = heroes
-
 }

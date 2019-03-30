@@ -6,5 +6,4 @@ import com.felipesilva.marvelheroes.data.repository.Repository
 
 class ListViewModel(private val repository: Repository) : ViewModel() {
     fun getHeroes() = repository.getHeroes()
-    fun addCharacter(character: CharactersData) = repository.addCharacter(character)
 }

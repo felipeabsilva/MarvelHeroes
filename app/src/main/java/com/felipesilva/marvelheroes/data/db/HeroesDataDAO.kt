@@ -5,6 +5,5 @@ import com.felipesilva.marvelheroes.data.model.CharactersData
 
 
 interface HeroesDataDAO {
-    fun addCharacter(charactersData: CharactersData)
     fun getHeroes(): LiveData<List<CharactersData>>
 }

@@ -27,11 +27,11 @@ class ListActivity : AppCompatActivity(), KodeinAware {
             .get(ListViewModel::class.java)
 
         viewModel.getHeroes().observe(this, Observer { heroes ->
-            val stringBuilder = StringBuilder()
+            /*val stringBuilder = StringBuilder()
             heroes.forEach{ hero ->
                 stringBuilder.append("$hero\n\n")
-            }
-            text_view.text= stringBuilder.toString()
+            }*/
+            text_view.text = heroes.size.toString()
         })
 
     }
