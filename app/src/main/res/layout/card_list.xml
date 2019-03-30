@@ -32,7 +32,7 @@
             android:padding="4dp"
             android:textSize="18sp"
             android:textColor="#000"
-            android:text="TESTE" />
+            android:text="NAME" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_card_modified"
@@ -45,7 +45,7 @@
             android:padding="4dp"
             android:textSize="14sp"
             android:textColor="#000"
-            android:text="TESTE" />
+            android:text="LAST MODIFY" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_card_description"
@@ -58,7 +58,7 @@
             android:padding="4dp"
             android:textSize="14sp"
             android:textColor="#000"
-            android:text="TESTE" />
+            android:text="DESCRIPTION" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
