@@ -1,4 +1,4 @@
-package com.felipesilva.marvelheroes.data.db
+package com.felipesilva.marvelheroes.data.db.heroes
 
 import android.util.Log.d
 import androidx.lifecycle.MutableLiveData

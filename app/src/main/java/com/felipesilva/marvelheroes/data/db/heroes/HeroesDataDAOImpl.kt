@@ -1,10 +1,11 @@
-package com.felipesilva.marvelheroes.data.db
+package com.felipesilva.marvelheroes.data.db.heroes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.felipesilva.marvelheroes.data.model.CharactersData
 
-class HeroesDataDAOImpl(private val heroesDatabase: HeroesDatabase) : HeroesDataDAO {
+class HeroesDataDAOImpl(private val heroesDatabase: HeroesDatabase) :
+    HeroesDataDAO {
     private val heroesList = mutableListOf<CharactersData>()
     private val heroes = MutableLiveData<List<CharactersData>>()
 

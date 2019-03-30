@@ -1,4 +1,4 @@
-package com.felipesilva.marvelheroes.data.db
+package com.felipesilva.marvelheroes.data.db.heroes
 
 import androidx.lifecycle.LiveData
 import com.felipesilva.marvelheroes.data.model.CharactersData

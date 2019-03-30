@@ -1,10 +1,10 @@
 package com.felipesilva.marvelheroes
 
 import android.app.Application
-import com.felipesilva.marvelheroes.data.db.HeroesDataDAO
-import com.felipesilva.marvelheroes.data.db.HeroesDataDAOImpl
-import com.felipesilva.marvelheroes.data.db.HeroesDatabase
-import com.felipesilva.marvelheroes.data.db.HeroesDatabaseImpl
+import com.felipesilva.marvelheroes.data.db.heroes.HeroesDataDAO
+import com.felipesilva.marvelheroes.data.db.heroes.HeroesDataDAOImpl
+import com.felipesilva.marvelheroes.data.db.heroes.HeroesDatabase
+import com.felipesilva.marvelheroes.data.db.heroes.HeroesDatabaseImpl
 import com.felipesilva.marvelheroes.data.remote.config.RetrofitConfig
 import com.felipesilva.marvelheroes.data.repository.Repository
 import com.felipesilva.marvelheroes.data.repository.RepositoryImpl
@@ -19,8 +19,16 @@ import org.kodein.di.generic.singleton
 class ListApplication : Application(), KodeinAware {
     override val kodein: Kodein = Kodein.lazy {
         bind() from provider { RetrofitConfig() }
-        bind<HeroesDatabase>() with singleton { HeroesDatabaseImpl(instance()) }
-        bind<HeroesDataDAO>() with singleton { HeroesDataDAOImpl(instance()) }
+        bind<HeroesDatabase>() with singleton {
+            HeroesDatabaseImpl(
+                instance()
+            )
+        }
+        bind<HeroesDataDAO>() with singleton {
+            HeroesDataDAOImpl(
+                instance()
+            )
+        }
         bind<Repository>() with singleton { RepositoryImpl(instance()) }
 
 /*        bind<HeroesDatabase>() with singleton { HeroesDatabaseImpl(instance(), instance()) }

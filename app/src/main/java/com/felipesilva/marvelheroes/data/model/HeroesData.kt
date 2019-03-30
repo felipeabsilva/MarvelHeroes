@@ -12,6 +12,7 @@ data class Results(
 )
 
 data class CharactersData(
+    @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("modified") val lastModify: Date,
     @SerializedName("description") val description: String,
