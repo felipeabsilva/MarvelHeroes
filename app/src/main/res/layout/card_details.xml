@@ -11,26 +11,41 @@
         android:layout_height="match_parent"
         android:background="@color/colorBlack">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_detail_character"
+        <FrameLayout
+            android:id="@+id/frame_layout_image_details"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:src="@drawable/ic_launcher_background"
-            android:adjustViewBounds="true"
-            android:padding="6dp" />
+            android:padding="4dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_detail_character"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/ic_launcher_background"
+                android:adjustViewBounds="true"
+                android:padding="2dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/image_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_detail_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/image_detail_character"
+            app:layout_constraintTop_toBottomOf="@id/frame_layout_image_details"
             android:maxLines="1"
             android:padding="6dp"
             android:textSize="26sp"
-            android:textColor="@color/colorWhite"
-            android:text="NAME" />
+            android:textColor="@color/colorPrimary"
+            android:text="[NAME]" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_detail_modified"
@@ -41,7 +56,7 @@
             android:padding="6dp"
             android:textSize="18sp"
             android:textColor="@color/colorWhite"
-            android:text="LAST MODIFY" />
+            android:text="[LAST MODIFY]" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_detail_description"
@@ -51,7 +66,7 @@
             android:padding="6dp"
             android:textSize="18sp"
             android:textColor="@color/colorWhite"
-            android:text="DESCRIPTION" />
+            android:text="[DESCRIPTION]" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_detail_comics"
@@ -61,15 +76,16 @@
             android:maxLines="1"
             android:padding="6dp"
             android:textSize="18sp"
-            android:textColor="@color/colorWhite"
-            android:text="COMICS" />
+            android:textColor="@color/colorPrimary"
+            android:text="@string/comics_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_comics"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_detail_comics"
             app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:padding="6dp" >
 
         </androidx.recyclerview.widget.RecyclerView>

@@ -23,13 +23,10 @@ class DetailsActivity : AppCompatActivity(), KodeinAware {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.card_details)
-        d("123felipe", "Entrei na Nova Instancia !")
         initializeUI()
     }
 
     private fun initializeUI() {
-        d("123felipe", "Entrei no Initialize!")
-
         val detailsViewModel = ViewModelProviders.of(this, detailsViewModelFactory)
             .get(DetailsViewModel::class.java)
 
@@ -48,8 +45,6 @@ class DetailsActivity : AppCompatActivity(), KodeinAware {
     }
 
     private fun bindElements() {
-        d("123felipe", "Entrei no Bind!")
-
         val imageView = image_detail_character
         val nameView = text_detail_name
         val modifiedView = text_detail_modified
@@ -58,7 +53,13 @@ class DetailsActivity : AppCompatActivity(), KodeinAware {
         val image = intent.getStringExtra("image")
         val name = intent.getStringExtra("name")
         val lastModify = intent.getStringExtra("lastMofidy")
-        val description = intent.getStringExtra("description")
+
+        setupActionBar(name)
+
+        val description = if (intent.getStringExtra("description") != "")
+            intent.getStringExtra("description")
+        else
+            "Description not assigned."
 
         image?.let {
             Glide.with(imageView.context)
@@ -69,6 +70,11 @@ class DetailsActivity : AppCompatActivity(), KodeinAware {
         nameView.text = name
         modifiedView.text = lastModify
         descriptionView.text = description
+    }
+
+    fun setupActionBar(title: String) {
+        val actionBar = supportActionBar
+        actionBar?.title = title
     }
 
 }

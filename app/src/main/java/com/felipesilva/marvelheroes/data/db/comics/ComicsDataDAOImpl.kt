@@ -22,6 +22,4 @@ class ComicsDataDAOImpl(val comicsDatabase: ComicsDatabase) : ComicsDataDAO {
 
     override fun getComics(): LiveData<List<ComicsDetails>> = comics
 
-
-
 }

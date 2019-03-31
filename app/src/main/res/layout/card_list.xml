@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="124dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorBlack">
+    android:background="@color/colorBlack" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -12,36 +12,51 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@color/colorBlack">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_card_character"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+        <FrameLayout
+            android:id="@+id/frame_layout_image_card"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:padding="4dp"
-            android:src="@drawable/ic_launcher_background" />
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:padding="4dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_card_character"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:padding="2dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:src="@drawable/ic_launcher_background" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:src="@drawable/image_style"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_card_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/image_card_character"
+            app:layout_constraintLeft_toRightOf="@id/frame_layout_image_card"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:maxLines="1"
             android:padding="4dp"
             android:textSize="18sp"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorPrimary"
             android:text="NAME" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/text_card_modified"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/image_card_character"
+            app:layout_constraintLeft_toRightOf="@id/frame_layout_image_card"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_card_name"
             android:maxLines="1"
@@ -54,7 +69,7 @@
             android:id="@+id/text_card_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@id/image_card_character"
+            app:layout_constraintLeft_toRightOf="@id/frame_layout_image_card"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_card_modified"
             android:maxLines="3"

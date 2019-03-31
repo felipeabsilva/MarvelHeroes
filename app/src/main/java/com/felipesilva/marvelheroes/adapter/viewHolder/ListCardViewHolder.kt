@@ -1,7 +1,6 @@
 package com.felipesilva.marvelheroes.adapter.viewHolder
 
 import android.content.Intent
-import android.util.Log.d
 import android.view.View
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
@@ -21,10 +20,12 @@ class ListCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
     private lateinit var imageUrl: String
 
     fun bind(charactersData: CharactersData) {
+        val lastModify = "Last Modify: ${charactersData.lastModify.formatDate()}"
+        imageUrl = "${charactersData.thumbnail.path}.${charactersData.thumbnail.extension}"
+
         nameView.text = charactersData.name
         descriptionView.text = charactersData.description
-        modifiedView.text = "Last Modify: ${charactersData.lastModify.formatDate()}"
-        imageUrl = "${charactersData.thumbnail.path}.${charactersData.thumbnail.extension}"
+        modifiedView.text = lastModify
 
         bindImage(imageView)
 
@@ -33,7 +34,6 @@ class ListCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
     private fun bindImage(imageView: ImageView) {
         imageUrl.let {
-            d("123felipe", it)
             Glide.with(imageView.context)
                 .load(it)
                 .override(120,120)

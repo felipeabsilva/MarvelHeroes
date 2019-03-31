@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.felipesilva.marvelheroes.R
 import com.felipesilva.marvelheroes.data.repository.Repository
 import com.felipesilva.marvelheroes.ui.list.ListActivity
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance

@@ -1,6 +1,5 @@
 package com.felipesilva.marvelheroes.adapter.viewHolder
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +19,6 @@ class ComicsCardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private fun bindImage(imageView: ImageView, imagePath: String, imageExtension: String) {
         imagePath.let {
             val imageUrl = "$imagePath.$imageExtension"
-            Log.d("123felipe", imageUrl)
             Glide.with(imageView.context)
                 .load(imageUrl)
                 .override(120,185)
