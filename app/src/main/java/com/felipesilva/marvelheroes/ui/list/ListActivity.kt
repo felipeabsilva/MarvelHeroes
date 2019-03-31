@@ -1,16 +1,22 @@
 package com.felipesilva.marvelheroes.ui.list
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.felipesilva.marvelheroes.R
-import com.felipesilva.marvelheroes.data.CharactersData
-import com.felipesilva.marvelheroes.utilities.InjectorUtils
+import com.felipesilva.marvelheroes.adapter.ListCardAdapter
+import com.felipesilva.marvelheroes.data.model.CharactersData
 import kotlinx.android.synthetic.main.activity_list.*
-import java.lang.StringBuilder
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.closestKodein
+import org.kodein.di.generic.instance
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity(), KodeinAware {
+    override val kodein by closestKodein()
+    private val listViewModelFactory : ListViewModelFactory by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,25 +25,15 @@ class ListActivity : AppCompatActivity() {
     }
 
     private fun initializeUI() {
-        val factory = InjectorUtils.provideListViewModelFactory()
-        val viewModel = ViewModelProviders.of(this, factory)
+        val viewModel = ViewModelProviders.of(this, listViewModelFactory)
             .get(ListViewModel::class.java)
 
-        viewModel.getHeroes().observe(this, Observer { heroes ->
-            val stringBuilder = StringBuilder()
-            heroes.forEach{ hero ->
-                stringBuilder.append("$hero\n\n")
-            }
-            text_view.text= stringBuilder.toString()
-        })
-
-        button_test.setOnClickListener {
-            val character = CharactersData("Felipe", "Yesterday", "Desc")
-            val character2 = CharactersData("Felipe2", "Yesterday2", "Desc2")
-
-            viewModel.addCharacter(character)
-            viewModel.addCharacter(character2)
+        recycler_list.apply {
+            layoutManager = LinearLayoutManager(this@ListActivity)
         }
 
+        viewModel.getHeroes().observe(this, Observer {
+            recycler_list.adapter = ListCardAdapter(viewModel.getHeroes())
+        })
     }
 }
