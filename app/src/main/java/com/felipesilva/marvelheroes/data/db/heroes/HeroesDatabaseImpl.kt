@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class HeroesDatabaseImpl(val retrofit: RetrofitConfig) : HeroesDatabase {
+class HeroesDatabaseImpl(retrofit: RetrofitConfig) : HeroesDatabase {
     private val heroesList = mutableListOf<CharactersData>()
     private val heroes = MutableLiveData<List<CharactersData>>()
 

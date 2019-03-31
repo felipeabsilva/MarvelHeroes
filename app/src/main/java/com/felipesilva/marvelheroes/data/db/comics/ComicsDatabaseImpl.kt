@@ -11,7 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ComicsDatabaseImpl(val retrofit: RetrofitConfig) : ComicsDatabase {
+class ComicsDatabaseImpl(retrofit: RetrofitConfig) : ComicsDatabase {
     private val comicsList = mutableListOf<ComicsDetails>()
     private val comics = MutableLiveData<List<ComicsDetails>>()
 
@@ -19,6 +19,11 @@ class ComicsDatabaseImpl(val retrofit: RetrofitConfig) : ComicsDatabase {
         .create(ApiService::class.java)
 
     override fun makeCallListComics(id: Int) {
+        if (comicsList.isNotEmpty())
+            comicsList.clear()
+
+        comics.value = comicsList
+
         api.makeCallListComics(id).enqueue(object : Callback<ComicsData> {
             override fun onResponse(call: Call<ComicsData>, response: Response<ComicsData>) {
                 response.body()?.let {
@@ -34,9 +39,6 @@ class ComicsDatabaseImpl(val retrofit: RetrofitConfig) : ComicsDatabase {
     }
 
     override fun loadComics(comicsDetails: List<ComicsDetails>) {
-        if (comicsList.isNotEmpty())
-            comicsList.clear()
-
         comicsList.addAll(comicsDetails)
         comics.value = comicsList
     }

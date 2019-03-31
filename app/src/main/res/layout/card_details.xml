@@ -3,11 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack" >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBlack">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_detail_character"
@@ -27,7 +29,7 @@
             android:maxLines="1"
             android:padding="6dp"
             android:textSize="26sp"
-            android:textColor="#000"
+            android:textColor="@color/colorWhite"
             android:text="NAME" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -38,7 +40,7 @@
             android:maxLines="1"
             android:padding="6dp"
             android:textSize="18sp"
-            android:textColor="#000"
+            android:textColor="@color/colorWhite"
             android:text="LAST MODIFY" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -46,10 +48,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_detail_modified"
-            android:maxLines="1"
             android:padding="6dp"
             android:textSize="18sp"
-            android:textColor="#000"
+            android:textColor="@color/colorWhite"
             android:text="DESCRIPTION" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -60,7 +61,7 @@
             android:maxLines="1"
             android:padding="6dp"
             android:textSize="18sp"
-            android:textColor="#000"
+            android:textColor="@color/colorWhite"
             android:text="COMICS" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/text_detail_comics"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:padding="6dp">
+            android:padding="6dp" >
 
         </androidx.recyclerview.widget.RecyclerView>
 

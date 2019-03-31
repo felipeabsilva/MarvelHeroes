@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBlack">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlack">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_comic_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|bottom"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/colorWhite"
+            android:text="[COMIC TITLE]"
+            android:padding="4dp"
+            android:textSize="12sp"
+            android:lines="2"
+            android:maxLines="2" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image_comic"
+            app:layout_constraintTop_toBottomOf="@id/text_comic_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_width="120dp"
+            android:layout_height="185dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

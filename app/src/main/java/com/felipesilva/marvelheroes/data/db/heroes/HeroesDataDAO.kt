@@ -5,5 +5,6 @@ import com.felipesilva.marvelheroes.data.model.CharactersData
 
 
 interface HeroesDataDAO {
+    fun makeCallListHeroes()
     fun getHeroes(): LiveData<List<CharactersData>>
 }

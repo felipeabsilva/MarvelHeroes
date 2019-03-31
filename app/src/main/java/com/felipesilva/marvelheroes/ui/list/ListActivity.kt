@@ -14,7 +14,6 @@ import org.kodein.di.android.closestKodein
 import org.kodein.di.generic.instance
 
 class ListActivity : AppCompatActivity(), KodeinAware {
-
     override val kodein by closestKodein()
     private val listViewModelFactory : ListViewModelFactory by instance()
 

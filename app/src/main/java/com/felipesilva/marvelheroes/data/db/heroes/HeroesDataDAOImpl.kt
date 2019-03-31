@@ -9,7 +9,7 @@ class HeroesDataDAOImpl(private val heroesDatabase: HeroesDatabase) :
     private val heroesList = mutableListOf<CharactersData>()
     private val heroes = MutableLiveData<List<CharactersData>>()
 
-    init {
+    override fun makeCallListHeroes() {
         heroesDatabase.makeCallListHeroes()
 
         heroesDatabase.getHeroes().observeForever { mHeroes ->
